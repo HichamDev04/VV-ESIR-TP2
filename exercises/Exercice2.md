@@ -7,17 +7,26 @@ Pick a Java project from Github (see the [instructions](../sujet.md) for suggest
 
 ## Answer
 
+Pour cet exercice nous avons utilisé le projet **commons-cli** disponible depuis https://github.com/apache/commons-cli . 
+
 **True Positive** : 
-Problème détecté par PMD : ReturnEmptyCollectionRatherThanNull dans CommandLine.java (lignes 442 et 465).
-Solution : Modifier la méthode pour retourner une collection vide plutôt que null. Cela évite les erreurs NullPointerException et améliore la robustesse du code.
+Problème détecté par PMD : `ReturnEmptyCollectionRatherThanNull` dans `CommandLine.java` (lignes 442 et 465).
+Solution : Modifier la méthode pour retourner une collection vide plutôt que `null`. Cela évite les erreurs `NullPointerException` et améliore la robustesse du code.
 
 Modification proposée :
-'''
+
+**Avant**
+```
+return null;
+```
+**Après**
+```
 return Collections.emptyList();
-'''
+```
+
 
 **False Positive** : 
-Problème détecté par PMD : UncommentedEmptyMethodBody dans BasicParserTest.java.
+Problème détecté par PMD : `UncommentedEmptyMethodBody` dans `BasicParserTest.java`.
 Raison de ne pas corriger : Ces méthodes vides peuvent être en attente d'implémentation ultérieure (tests "stubs") ou être utilisées comme squelette. Les commenter n'apporterait pas de valeur significative, car il est courant d'avoir des tests non encore implémentés dans les premières phases du développement.
 
 
